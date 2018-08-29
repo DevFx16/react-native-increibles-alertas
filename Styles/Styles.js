@@ -12,18 +12,29 @@ export default Styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
-    Boton: {
-        height: 250
+    BotonAzul: {
+        backgroundColor: 'blue'
+    },
+    BotonRojo: {
+        backgroundColor: 'red'
     },
     TextoHeader: {
         fontWeight: 'bold',
-        fontSize: 24
+        fontSize: 24,
+        textAlign: 'center'
     },
     TextoMensaje: {
-        fontSize: 16
+        fontSize: 16,
+        textAlign: 'center'
     },
     Imagen: {
         width: '50%',
         height: '50%'
+    },
+    Margen: {
+        margin: 5,
+    },
+    Color: {
+        color: 'white'
     }
 });
