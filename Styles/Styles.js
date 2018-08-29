@@ -2,9 +2,8 @@ import { StyleSheet, Dimensions } from 'react-native';
 
 export default Styles = StyleSheet.create({
     Modal: {
-        width: Dimensions.get('window').width - 200,
-        height: 230,
-        borderRadius: 20,
+        width: Dimensions.get('window').width - 130,
+        height: 280,
     },
     Flex: {
         flex: 1
@@ -14,15 +13,17 @@ export default Styles = StyleSheet.create({
         alignItems: 'center'
     },
     Boton: {
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
-        height: 150
+        height: 250
     },
     TextoHeader: {
         fontWeight: 'bold',
         fontSize: 24
     },
     TextoMensaje: {
-        fontSize: 20
+        fontSize: 16
+    },
+    Imagen: {
+        width: '50%',
+        height: '50%'
     }
 });
