@@ -8,7 +8,19 @@
 
 # Ejemplos
 
-#### Puede revisar los ejemplos encontrados en la carpeta de ejemplos.
+```javascript
+<Alertas 
+  Tipo='error'
+  Titulo='Error'
+  Mensaje='Ha ocurrido un error vualva a intentar'
+  Spinner={false}
+  Mostrar
+  BotonCancelado={false}
+  TextoBotonCancelado='Cancelar'
+  TextoBotonConfirmado='Ok'
+  onBotonCancelado={() => {}}
+  onBotonConfirmado={() => {}} />
+ ```
 
 # Instalación
 
@@ -22,6 +34,7 @@
 | ----- | ---- | ---- |
 | Tipo | String | Muestra el icono del alerta puede tomar valores de `aprobado`<br/>`info` `peligro` `error`|
 | Titulo | String | Muestra el titulo de la alerta|
+| Mensaje | String | Muestra el mensaje de la alerta|
 | Spinner | Bool | Muestra o no un indicador de cargando|
 | Mostrar | Bool | Muestra o no la alerta|
 | BotonCancelado | Bool | Muestra o no el boton secundario|
