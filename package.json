@@ -1,13 +1,9 @@
 {
-  "name": "empty-project-template",
-  "main": "node_modules/expo/AppEntry.js",
-  "private": true,
-  "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject"
-  },
+  "name": "React-Native-Amazing-Alerts",
+  "description": "alertas para react native",
+  "version": "1.0.0",
+  "private": false,
+  "main": "App.js",
   "dependencies": {
     "expo": "^29.0.0",
     "prop-types": "^15.6.2",
