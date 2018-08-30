@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text, ActivityIndicator, Button, Image } from 'react-native';
+import { Text, Image, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modalbox';
 import PropTypes from 'prop-types';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -11,16 +11,16 @@ export default class AmazingAlerts extends Component {
   constructor(state) {
     super(state);
     this.state = {
-      Tipo: 'peligro',
+      Tipo: 'aprobado',
       Titulo: 'Probando Titulo',
       Mensaje: 'Probando Mensaje Version Mejorada De Nuevo A Marcha Esto Sera Largo',
       Spinner: false,
       Mostrar: false,
-      BotonCancelado: true,
+      BotonCancelado: false,
       TextoBotonCancelado: 'Cancelar',
       TextoBotonConfirmado: 'OK',
-      onBotonCancelado: this.onCancelar,
-      onBotonConfirmado: this.onConfirmado,
+      onBotonCancelado: () => { },
+      onBotonConfirmado: () => { },
     };
     if (this.state.Spinner) {
       this.Imagen = require('../assets/Spinner.gif');
@@ -38,7 +38,8 @@ export default class AmazingAlerts extends Component {
   }
 
   onCancelar = () => {
-    console.log("Hola")
+    this.state.onBotonCancelado();
+    this.refs.Modal.close();
   }
 
   componentWillMount() {
@@ -48,7 +49,8 @@ export default class AmazingAlerts extends Component {
   }
 
   onConfirmado = () => {
-    console.log("Hola")
+    this.state.onBotonConfirmado();
+    this.refs.Modal.close();
   }
 
   render() {
@@ -56,26 +58,30 @@ export default class AmazingAlerts extends Component {
       <Modal isOpen={this.state.Mostrar} style={Styles.Modal} position='center' ref='Modal' isDisabled={false} backdropPressToClose={false} swipeToClose={false}>
         <Grid style={Styles.Flex}>
           <Row size={2} style={Styles.Centrado}>
-            <SimpleAnimation delay={500} duration={1000} direction='left' movementType='slide' staticType='bounce' style={Styles.Margen}>
+            <SimpleAnimation delay={500} duration={1500} direction='left' movementType='slide' staticType='bounce' style={Styles.Margen}>
               <Text style={Styles.TextoHeader}>{this.state.Titulo}</Text>
             </SimpleAnimation>
           </Row>
           <Col size={4} style={Styles.Centrado}>
             <Image source={this.Imagen} style={Styles.Imagen} resizeMode='contain' />
             <Row style={Styles.Centrado}>
-              <SimpleAnimation delay={500} duration={1000} direction='left' movementType='slide' staticType='bounce' style={Styles.Margen}>
+              <SimpleAnimation delay={500} duration={1500} direction='left' movementType='slide' staticType='bounce' style={Styles.Margen}>
                 <Text style={Styles.TextoMensaje}>{this.state.Mensaje}</Text>
               </SimpleAnimation>
             </Row>
           </Col>
           <Row size={1}>
-            <Col size={1} style={[Styles.BotonAzul, Styles.Centrado]} onPress={this.onConfirmado.bind(this)}>
-              <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.state.TextoBotonConfirmado}</Text>
-            </Col>
-            {this.state.BotonCancelado ? (
-              <Col size={1} style={[Styles.BotonRojo, Styles.Centrado]} onPress={this.onCancelar.bind(this)}>
-                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.state.TextoBotonCancelado}</Text>
+            <TouchableOpacity onPress={this.onConfirmado.bind(this)} style={[Styles.Flex, Styles.BotonAzul]}>
+              <Col size={1} style={[Styles.Centrado]} >
+                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.state.TextoBotonConfirmado}</Text>
               </Col>
+            </TouchableOpacity>
+            {this.state.BotonCancelado ? (
+              <TouchableOpacity onPress={this.onCancelar.bind(this)} style={[Styles.Flex, Styles.BotonRojo]}>
+                <Col size={1} style={[Styles.Centrado]}>
+                  <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.state.TextoBotonCancelado}</Text>
+                </Col>
+              </TouchableOpacity>
             ) : null}
           </Row>
         </Grid>
