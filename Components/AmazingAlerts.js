@@ -8,28 +8,16 @@ import { SimpleAnimation } from 'react-native-simple-animations';
 
 export default class AmazingAlerts extends Component {
 
-  constructor(state) {
-    super(state);
-    this.state = {
-      Tipo: 'aprobado',
-      Titulo: 'Probando Titulo',
-      Mensaje: 'Probando Mensaje Version Mejorada De Nuevo A Marcha Esto Sera Largo',
-      Spinner: false,
-      Mostrar: false,
-      BotonCancelado: false,
-      TextoBotonCancelado: 'Cancelar',
-      TextoBotonConfirmado: 'OK',
-      onBotonCancelado: () => { },
-      onBotonConfirmado: () => { },
-    };
-    if (this.state.Spinner) {
+  constructor(props) {
+    super(props);
+    if (this.props.Spinner) {
       this.Imagen = require('../assets/Spinner.gif');
     } else {
-      if (this.state.Tipo == 'aprobado') {
+      if (this.props.Tipo == 'aprobado') {
         this.Imagen = require('../assets/Aprobado.png');
-      } else if (this.state.Tipo == 'error') {
+      } else if (this.props.Tipo == 'error') {
         this.Imagen = require('../assets/Error.png');
-      } else if (this.state.Tipo == 'info') {
+      } else if (this.props.Tipo == 'info') {
         this.Imagen = require('../assets/Info.png');
       } else {
         this.Imagen = require('../assets/Peligro.png');
@@ -38,48 +26,42 @@ export default class AmazingAlerts extends Component {
   }
 
   onCancelar = () => {
-    this.state.onBotonCancelado();
+    this.props.onBotonCancelado();
     this.refs.Modal.close();
   }
 
-  componentWillMount() {
-    setTimeout(() => {
-      this.setState({ Mostrar: true });
-    }, 2000);
-  }
-
   onConfirmado = () => {
-    this.state.onBotonConfirmado();
+    this.props.onBotonConfirmado();
     this.refs.Modal.close();
   }
 
   render() {
     return (
-      <Modal isOpen={this.state.Mostrar} style={Styles.Modal} position='center' ref='Modal' isDisabled={false} backdropPressToClose={false} swipeToClose={false}>
+      <Modal isOpen={this.props.Mostrar} style={Styles.Modal} position='center' ref='Modal' isDisabled={false} backdropPressToClose={false} swipeToClose={false}>
         <Grid style={Styles.Flex}>
           <Row size={2} style={Styles.Centrado}>
             <SimpleAnimation delay={500} duration={1500} direction='left' movementType='slide' staticType='bounce' style={Styles.Margen}>
-              <Text style={Styles.TextoHeader}>{this.state.Titulo}</Text>
+              <Text style={Styles.TextoHeader}>{this.props.Titulo}</Text>
             </SimpleAnimation>
           </Row>
           <Col size={4} style={Styles.Centrado}>
             <Image source={this.Imagen} style={Styles.Imagen} resizeMode='contain' />
             <Row style={Styles.Centrado}>
               <SimpleAnimation delay={500} duration={1500} direction='left' movementType='slide' staticType='bounce' style={Styles.Margen}>
-                <Text style={Styles.TextoMensaje}>{this.state.Mensaje}</Text>
+                <Text style={Styles.TextoMensaje}>{this.props.Mensaje}</Text>
               </SimpleAnimation>
             </Row>
           </Col>
           <Row size={1}>
             <TouchableOpacity onPress={this.onConfirmado.bind(this)} style={[Styles.Flex, Styles.BotonAzul]}>
               <Col size={1} style={[Styles.Centrado]} >
-                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.state.TextoBotonConfirmado}</Text>
+                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonConfirmado}</Text>
               </Col>
             </TouchableOpacity>
-            {this.state.BotonCancelado ? (
+            {this.props.BotonCancelado ? (
               <TouchableOpacity onPress={this.onCancelar.bind(this)} style={[Styles.Flex, Styles.BotonRojo]}>
                 <Col size={1} style={[Styles.Centrado]}>
-                  <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.state.TextoBotonCancelado}</Text>
+                  <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonCancelado}</Text>
                 </Col>
               </TouchableOpacity>
             ) : null}
@@ -90,7 +72,7 @@ export default class AmazingAlerts extends Component {
   }
 }
 
-/*AmazingAlerts.propTypes = {
+AmazingAlerts.propTypes = {
   Tipo: PropTypes.string.isRequired,
   Titulo: PropTypes.string.isRequired,
   Spinner: PropTypes.bool.isRequired,
@@ -100,4 +82,4 @@ export default class AmazingAlerts extends Component {
   TextoBotonConfirmado: PropTypes.string.isRequired,
   onBotonCancelado: PropTypes.func.isRequired,
   onBotonConfirmado: PropTypes.func.isRequired,
-  } */
+}
