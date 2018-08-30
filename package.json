@@ -2,9 +2,25 @@
   "name": "react-native-increibles-alertas",
   "description": "alertas para react native",
   "version": "1.0.0",
+  "author": "Fernando Araujo <fernandoraujo081@gmail.com>",
   "private": false,
   "main": "App.js",
+    "keywords": [
+    "react",
+    "react-native",
+    "react-component",
+    "ios",
+    "android"
+  ],
+   "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FernanPro18/react-native-increibles-alertas.git"
+  },
+  "bugs": {
+    "url": "https://github.com/FernanPro18/react-native-increibles-alertas/issues"
+  },
   "dependencies": {
+    "expo": "^29.0.0",
     "prop-types": "^15.6.2",
     "react": "16.3.1",
     "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
