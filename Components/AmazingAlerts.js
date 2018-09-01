@@ -75,6 +75,7 @@ export default class AmazingAlerts extends Component {
 AmazingAlerts.propTypes = {
   Tipo: PropTypes.string.isRequired,
   Titulo: PropTypes.string.isRequired,
+  Mensaje: PropTypes.string.isRequired,
   Spinner: PropTypes.bool.isRequired,
   Mostrar: PropTypes.bool.isRequired,
   BotonCancelado: PropTypes.bool.isRequired,
