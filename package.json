@@ -5,14 +5,14 @@
   "author": "Fernando Araujo <fernandoraujo081@gmail.com>",
   "private": false,
   "main": "App.js",
-    "keywords": [
+  "keywords": [
     "react",
     "react-native",
     "react-component",
     "ios",
     "android"
   ],
-   "repository": {
+  "repository": {
     "type": "git",
     "url": "git+https://github.com/FernanPro18/react-native-increibles-alertas.git"
   },

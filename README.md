@@ -4,6 +4,7 @@
 
 # Previsualización
 
+![](https://media.giphy.com/media/8xlxkPtq27l6pzHzUp/giphy.gif)
 
 
 # Ejemplos
