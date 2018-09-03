@@ -39,6 +39,11 @@ export default class AmazingAlerts extends Component {
     }
   }
 
+  componentWillReceiveProps(props){
+    this.props = props;
+    this.CambiarImagen();
+  }
+
   onCancelar = () => {
     this.props.onBotonCancelado();
     this.refs.Modal.close();
