@@ -10,6 +10,9 @@ export default class AmazingAlerts extends Component {
 
   constructor(props) {
     super(props);
+  }
+
+  CambiarImagen() {
     if (this.props.Spinner) {
       this.Imagen = require('../assets/Spinner.gif');
     } else {
@@ -22,6 +25,17 @@ export default class AmazingAlerts extends Component {
       } else {
         this.Imagen = require('../assets/Peligro.png');
       }
+    }
+  }
+
+  componentDidMount() {
+    this.CambiarImagen();
+  }
+
+  componentDidUpdate() {
+    this.CambiarImagen();
+    if (this.props.Mostrar) {
+      this.refs.Modal.open();
     }
   }
 
