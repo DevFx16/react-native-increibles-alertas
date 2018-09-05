@@ -1,9 +1,10 @@
 {
   "name": "react-native-increibles-alertas",
   "description": "alertas para react native",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "Fernando Araujo <fernandoraujo081@gmail.com>",
   "private": false,
+  "license": "MIT",
   "main": "App.js",
   "keywords": [
     "react",

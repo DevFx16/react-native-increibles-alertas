@@ -39,7 +39,7 @@ export default class AmazingAlerts extends Component {
     }
   }
 
-  componentWillReceiveProps(props){
+  componentWillReceiveProps(props) {
     this.props = props;
     this.CambiarImagen();
   }
@@ -71,20 +71,22 @@ export default class AmazingAlerts extends Component {
               </SimpleAnimation>
             </Row>
           </Col>
-          <Row size={1}>
-            <TouchableOpacity onPress={this.onConfirmado.bind(this)} style={[Styles.Flex, Styles.BotonAzul]}>
-              <Col size={1} style={[Styles.Centrado]} >
-                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonConfirmado}</Text>
-              </Col>
-            </TouchableOpacity>
-            {this.props.BotonCancelado ? (
-              <TouchableOpacity onPress={this.onCancelar.bind(this)} style={[Styles.Flex, Styles.BotonRojo]}>
-                <Col size={1} style={[Styles.Centrado]}>
-                  <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonCancelado}</Text>
+          {
+            this.props.Spinner ? null : <Row size={1}>
+              <TouchableOpacity onPress={this.onConfirmado.bind(this)} style={[Styles.Flex, Styles.BotonAzul]}>
+                <Col size={1} style={[Styles.Centrado]} >
+                  <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonConfirmado}</Text>
                 </Col>
               </TouchableOpacity>
-            ) : null}
-          </Row>
+              {this.props.BotonCancelado ? (
+                <TouchableOpacity onPress={this.onCancelar.bind(this)} style={[Styles.Flex, Styles.BotonRojo]}>
+                  <Col size={1} style={[Styles.Centrado]}>
+                    <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonCancelado}</Text>
+                  </Col>
+                </TouchableOpacity>
+              ) : null}
+            </Row>
+          }
         </Grid>
       </Modal >
     );
