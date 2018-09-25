@@ -10,17 +10,37 @@
 # Ejemplos
 
 ```javascript
-<Alertas 
-  Tipo='error'
-  Titulo='Error'
-  Mensaje='Ha ocurrido un error vualva a intentar'
-  Spinner={false}
+ import {AlertaConfirmModule, AlertasModule, AlertaSpinnerModule} from 'react-native-increibles-alertas';
+ ```
+```javascript
+ <AlertasModule
+  Tipo='aprobado'
+  Titulo='Correcto'
+  Mensaje='Se ha hecho todo satisfactorio'
   Mostrar
-  BotonCancelado={false}
-  TextoBotonCancelado='Cancelar'
   TextoBotonConfirmado='Ok'
+  onBotonConfirmado={() => {}}
+/>
+ ```
+ 
+ ```javascript
+<AlertaConfirmModule
+  Titulo='Proceda'
+  Mensaje='¿Quiere continuar?'
+  Mostrar
+  TextoBotonConfirmado='Ok'
+  TextoBotonCancelado='Cancelar'
+  onBotonConfirmado={() => {}}
   onBotonCancelado={() => {}}
-  onBotonConfirmado={() => {}} />
+/>
+ ```
+ 
+  ```javascript
+<AlertaSpinnerModule
+  Titulo='Cargando'
+  Mensaje='Espere un momento'
+  Mostrar
+/>
  ```
 
 # Instalación
@@ -38,7 +58,6 @@
 | Mensaje | String | Muestra el mensaje de la alerta|
 | Spinner | Bool | Muestra o no un indicador de cargando|
 | Mostrar | Bool | Muestra o no la alerta|
-| BotonCancelado | Bool | Muestra o no el boton secundario|
 | TextoBotonCancelado | String | Muestra un texto en el boton secundario|
 | TextoBotonConfirmado | String | Muestra un texto en el boton primario|
 | onBotonCancelado | Func | Función cuando se presiona el boton secundario|
