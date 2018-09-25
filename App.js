@@ -2,6 +2,6 @@ import Alertas from './Components/Alertas';
 import AlertaConfirm from './Components/AlertaConfirm';
 import AlertaSpinner from './Components/AlertaSpinner';
 
-export const Alertas = Alertas;
-export const AlertaConfirm = AlertaConfirm;
-export const AlertaSpinner = AlertaSpinner;
+export const AlertasModule = Alertas;
+export const AlertaConfirmModule = AlertaConfirm;
+export const AlertaSpinnerModule = AlertaSpinner;
