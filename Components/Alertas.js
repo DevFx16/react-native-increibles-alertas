@@ -6,7 +6,7 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import Styles from '../Styles/Styles';
 import { SimpleAnimation } from 'react-native-simple-animations';
 
-export default class AmazingAlerts extends Component {
+export default class Alertas extends Component {
 
   constructor(props) {
     super(props);

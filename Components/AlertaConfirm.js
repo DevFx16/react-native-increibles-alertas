@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Text, Image } from 'react-native';
+import { Text, Image, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modalbox';
 import PropTypes from 'prop-types';
 import { Col, Row, Grid } from 'react-native-easy-grid';
@@ -67,7 +67,7 @@ export default class AlertaConfirm extends Component {
 
 }
 
-Alertas.propTypes = {
+AlertaConfirm.propTypes = {
     Titulo: PropTypes.string.isRequired,
     Mensaje: PropTypes.string.isRequired,
     Mostrar: PropTypes.bool.isRequired,
