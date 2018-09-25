@@ -13,18 +13,14 @@ export default class AmazingAlerts extends Component {
   }
 
   CambiarImagen() {
-    if (this.props.Spinner) {
-      this.Imagen = require('../assets/Spinner.gif');
+    if (this.props.Tipo == 'aprobado') {
+      this.Imagen = require('../assets/Aprobado.png');
+    } else if (this.props.Tipo == 'error') {
+      this.Imagen = require('../assets/Error.png');
+    } else if (this.props.Tipo == 'info') {
+      this.Imagen = require('../assets/Info.png');
     } else {
-      if (this.props.Tipo == 'aprobado') {
-        this.Imagen = require('../assets/Aprobado.png');
-      } else if (this.props.Tipo == 'error') {
-        this.Imagen = require('../assets/Error.png');
-      } else if (this.props.Tipo == 'info') {
-        this.Imagen = require('../assets/Info.png');
-      } else {
-        this.Imagen = require('../assets/Peligro.png');
-      }
+      this.Imagen = require('../assets/Peligro.png');
     }
   }
 
@@ -34,19 +30,12 @@ export default class AmazingAlerts extends Component {
 
   componentDidUpdate() {
     this.CambiarImagen();
-    if (this.props.Mostrar) {
-      this.refs.Modal.open();
-    }
+    this.props.Mostrar ? this.refs.Modal.open() : this.refs.Modal.close();
   }
 
   componentWillReceiveProps(props) {
     this.props = props;
     this.CambiarImagen();
-  }
-
-  onCancelar = () => {
-    this.props.onBotonCancelado();
-    this.refs.Modal.close();
   }
 
   onConfirmado = () => {
@@ -71,37 +60,24 @@ export default class AmazingAlerts extends Component {
               </SimpleAnimation>
             </Row>
           </Col>
-          {
-            this.props.Spinner ? null : <Row size={1}>
-              <TouchableOpacity onPress={this.onConfirmado.bind(this)} style={[Styles.Flex, Styles.BotonAzul]}>
-                <Col size={1} style={[Styles.Centrado]} >
-                  <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonConfirmado}</Text>
-                </Col>
-              </TouchableOpacity>
-              {this.props.BotonCancelado ? (
-                <TouchableOpacity onPress={this.onCancelar.bind(this)} style={[Styles.Flex, Styles.BotonRojo]}>
-                  <Col size={1} style={[Styles.Centrado]}>
-                    <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonCancelado}</Text>
-                  </Col>
-                </TouchableOpacity>
-              ) : null}
-            </Row>
-          }
+          <Row size={1}>
+            <TouchableOpacity onPress={this.onConfirmado.bind(this)} style={[Styles.Flex, Styles.BotonAzul]}>
+              <Col size={1} style={[Styles.Centrado]} >
+                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonConfirmado}</Text>
+              </Col>
+            </TouchableOpacity>
+          </Row>
         </Grid>
       </Modal >
     );
   }
 }
 
-AmazingAlerts.propTypes = {
+Alertas.propTypes = {
   Tipo: PropTypes.string.isRequired,
   Titulo: PropTypes.string.isRequired,
   Mensaje: PropTypes.string.isRequired,
-  Spinner: PropTypes.bool.isRequired,
   Mostrar: PropTypes.bool.isRequired,
-  BotonCancelado: PropTypes.bool.isRequired,
-  TextoBotonCancelado: PropTypes.string.isRequired,
   TextoBotonConfirmado: PropTypes.string.isRequired,
-  onBotonCancelado: PropTypes.func.isRequired,
   onBotonConfirmado: PropTypes.func.isRequired,
 }

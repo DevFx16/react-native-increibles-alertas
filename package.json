@@ -1,7 +1,7 @@
 {
   "name": "react-native-increibles-alertas",
   "description": "alertas para react native",
-  "version": "1.0.4",
+  "version": "2.0.0",
   "author": "Fernando Araujo <fernandoraujo081@gmail.com>",
   "private": false,
   "license": "MIT",
@@ -21,10 +21,7 @@
     "url": "https://github.com/FernanPro18/react-native-increibles-alertas/issues"
   },
   "dependencies": {
-    "expo": "^29.0.0",
     "prop-types": "^15.6.2",
-    "react": "16.3.1",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-29.0.0.tar.gz",
     "react-native-easy-grid": "^0.2.0",
     "react-native-modalbox": "^1.6.0",
     "react-native-simple-animations": "^0.1.2"

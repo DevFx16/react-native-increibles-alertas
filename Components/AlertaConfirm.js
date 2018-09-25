@@ -6,11 +6,11 @@ import { Col, Row, Grid } from 'react-native-easy-grid';
 import Styles from '../Styles/Styles';
 import { SimpleAnimation } from 'react-native-simple-animations';
 
-export default class AlertaSpinner extends Component {
+export default class AlertaConfirm extends Component {
 
     constructor(props) {
         super(props);
-        this.Imagen = require('../assets/Spinner.gif');
+        this.Imagen = require('../assets/Info.png');
     }
 
     componentDidUpdate() {
@@ -19,6 +19,16 @@ export default class AlertaSpinner extends Component {
 
     componentWillReceiveProps(props) {
         this.props = props;
+    }
+
+    onCancelar = () => {
+        this.props.onBotonCancelado();
+        this.refs.Modal.close();
+    }
+
+    onConfirmado = () => {
+        this.props.onBotonConfirmado();
+        this.refs.Modal.close();
     }
 
     render() {
@@ -38,6 +48,18 @@ export default class AlertaSpinner extends Component {
                             </SimpleAnimation>
                         </Row>
                     </Col>
+                    <Row size={1}>
+                        <TouchableOpacity onPress={this.onConfirmado.bind(this)} style={[Styles.Flex, Styles.BotonAzul]}>
+                            <Col size={1} style={[Styles.Centrado]} >
+                                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonConfirmado}</Text>
+                            </Col>
+                        </TouchableOpacity>
+                        <TouchableOpacity onPress={this.onCancelar.bind(this)} style={[Styles.Flex, Styles.BotonRojo]}>
+                            <Col size={1} style={[Styles.Centrado]}>
+                                <Text style={[Styles.TextoMensaje, Styles.Color]}>{this.props.TextoBotonCancelado}</Text>
+                            </Col>
+                        </TouchableOpacity>
+                    </Row>
                 </Grid>
             </Modal >
         );
@@ -45,8 +67,12 @@ export default class AlertaSpinner extends Component {
 
 }
 
-AlertaSpinner.propTypes = {
+Alertas.propTypes = {
     Titulo: PropTypes.string.isRequired,
     Mensaje: PropTypes.string.isRequired,
     Mostrar: PropTypes.bool.isRequired,
+    TextoBotonCancelado: PropTypes.string.isRequired,
+    TextoBotonConfirmado: PropTypes.string.isRequired,
+    onBotonCancelado: PropTypes.func.isRequired,
+    onBotonConfirmado: PropTypes.func.isRequired,
 }
